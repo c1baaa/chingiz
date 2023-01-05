@@ -3,12 +3,11 @@ import os
 from pytube import Caption
 from aiogram import Bot,Dispatcher,executor,types
 import sqlite3
-
-
+from config import API_TOKEN
 
 con = sqlite3.connect("tutorial.db")
 cur = con.cursor()
-TOKEN = '5006186670:AAFx7tLEL9LWZUfqgN0ICu7BIvTtdTTZOQo'
+
 
 cur.execute("""CREATE TABLE IF NOT EXISTS links(
     id INT,
@@ -19,7 +18,7 @@ con.commit()
 
 
 
-bot=Bot(TOKEN)
+bot=Bot(API_TOKEN)
 dp=Dispatcher(bot)
 @dp.message_handler(commands=['start'])
 async def start(message:types.Message):
